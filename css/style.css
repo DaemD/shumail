@@ -1,0 +1,496 @@
+.atmosphere {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(168, 110, 92, 0.22), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 100% 80%, rgba(86, 64, 90, 0.18), transparent 50%),
+        radial-gradient(ellipse 40% 30% at 0% 60%, rgba(92, 72, 48, 0.12), transparent 50%);
+}
+
+.grain {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.09;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px;
+    mix-blend-mode: overlay;
+}
+
+.sky {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.stars {
+    position: absolute;
+    inset: 0;
+}
+
+.star {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: #f7f1e4;
+    opacity: 0.35;
+    animation: twinkle var(--dur) ease-in-out var(--delay) infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.15; transform: scale(0.8); }
+    50% { opacity: 0.8; transform: scale(1.15); }
+}
+
+.moon {
+    position: absolute;
+    top: 7vh;
+    right: 8vw;
+    width: clamp(4.5rem, 11vw, 7.5rem);
+    height: clamp(4.5rem, 11vw, 7.5rem);
+}
+
+.moon-glow {
+    position: absolute;
+    inset: -45%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 236, 200, 0.38) 0%, rgba(255, 220, 160, 0.08) 42%, transparent 70%);
+    animation: moonBreath 7s ease-in-out infinite;
+}
+
+.moon-disc {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 32% 30%, #fff8ea 0%, #f0e0c0 38%, #c9b48a 100%);
+    box-shadow: 0 0 40px rgba(255, 228, 180, 0.28);
+    overflow: hidden;
+}
+
+.crater {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(160, 140, 110, 0.22);
+}
+
+.crater-a { width: 22%; height: 22%; top: 28%; left: 24%; }
+.crater-b { width: 14%; height: 14%; top: 52%; left: 58%; }
+.crater-c { width: 10%; height: 10%; top: 62%; left: 32%; }
+
+.moon-cloud {
+    position: absolute;
+    top: 38%;
+    left: -80%;
+    width: 140%;
+    height: 28%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, rgba(18, 16, 14, 0.35), rgba(18, 16, 14, 0.18), transparent);
+    filter: blur(6px);
+    animation: cloudPass 18s linear infinite;
+}
+
+@keyframes moonBreath {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.08); }
+}
+
+@keyframes cloudPass {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(160%); }
+}
+
+/* ---- The tale: told only in motion, behind the letter ---- */
+
+.tale {
+    position: absolute;
+    inset: 0;
+    --birdy-fill: #7a6f63;
+    --mock-fill: #e6dccb;
+}
+
+.pond {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 5vh;
+    margin: 0 auto;
+    width: min(66vw, 40rem);
+    height: clamp(4.2rem, 12vh, 7.6rem);
+    border-radius: 50%;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 62%, transparent 100%);
+    mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 62%, transparent 100%);
+}
+
+.pond-surface,
+.pond-glow {
+    position: absolute;
+    inset: 0;
+}
+
+.pond-surface {
+    background:
+        radial-gradient(ellipse 55% 45% at 40% 45%, rgba(78, 78, 50, 0.8), transparent 75%),
+        radial-gradient(ellipse 30% 30% at 68% 60%, rgba(62, 54, 34, 0.85), transparent 80%),
+        radial-gradient(ellipse at 50% 50%, rgba(36, 36, 24, 0.95) 0%, rgba(24, 24, 16, 0.92) 60%, rgba(12, 12, 9, 0.6) 100%);
+}
+
+.pond-glow {
+    opacity: 0;
+    background:
+        radial-gradient(ellipse at 50% 40%, rgba(150, 172, 192, 0.42) 0%, rgba(62, 82, 104, 0.55) 55%, rgba(18, 24, 32, 0.5) 100%);
+}
+
+/* the moon's shimmer, only once the water is clear */
+.pond-glow::after {
+    content: "";
+    position: absolute;
+    top: 30%;
+    left: 66%;
+    width: 22%;
+    height: 14%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(255, 240, 210, 0.7), transparent 70%);
+    filter: blur(2px);
+    animation: shimmer 4.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 0.55; transform: scaleX(1); }
+    50% { opacity: 1; transform: scaleX(1.25); }
+}
+
+.reflection {
+    position: absolute;
+    top: 8%;
+    width: clamp(2.1rem, 3.6vw, 3.1rem);
+    aspect-ratio: 48 / 32;
+    opacity: 0;
+    filter: blur(2.5px);
+}
+
+.reflection svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform: scaleY(-1);
+}
+
+.reflection--birdy {
+    left: 30%;
+    color: var(--birdy-fill);
+    fill: var(--birdy-fill);
+}
+
+.reflection--mock {
+    left: 58%;
+    color: var(--mock-fill);
+    fill: var(--mock-fill);
+}
+
+.reflection--mock svg {
+    transform: scale(-1, -1);
+}
+
+.ripple {
+    position: absolute;
+    top: 30%;
+    width: 34%;
+    aspect-ratio: 3 / 1;
+    border: 1px solid rgba(214, 226, 236, 0.55);
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.ripple--meet { left: 47%; }
+.ripple--drink { left: 40%; top: 18%; width: 22%; }
+
+.tale .bird {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: clamp(2.1rem, 3.6vw, 3.1rem);
+    aspect-ratio: 48 / 32;
+    opacity: 0;
+    transform-origin: 50% 85%;
+    will-change: transform, opacity;
+}
+
+.bird--birdy {
+    color: var(--birdy-fill);
+    fill: var(--birdy-fill);
+}
+
+.bird--mock {
+    color: var(--mock-fill);
+    fill: var(--mock-fill);
+}
+
+.bird svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 6px rgba(255, 240, 210, 0.18));
+}
+
+.bird-fly {
+    transform-origin: center;
+    animation: flap 0.38s ease-in-out infinite;
+}
+
+/* a tired, heavier wingbeat */
+.bird--birdy .bird-fly {
+    animation-duration: 0.66s;
+}
+
+.bird-perch {
+    opacity: 0;
+}
+
+@keyframes flap {
+    0%, 100% { transform: scaleY(1) rotate(-8deg); }
+    50% { transform: scaleY(0.45) rotate(8deg); }
+}
+
+.notes {
+    position: absolute;
+    inset: 0;
+}
+
+.note {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: clamp(0.75rem, 1.3vw, 1.1rem);
+    opacity: 0;
+    color: #ecdcbc;
+    fill: #ecdcbc;
+    filter: drop-shadow(0 0 5px rgba(255, 226, 170, 0.45));
+}
+
+.note svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.branch {
+    position: absolute;
+    left: 0;
+    top: 58vh;
+    width: clamp(9rem, 27vw, 20rem);
+    aspect-ratio: 200 / 60;
+    opacity: 0;
+}
+
+.branch svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.branch-wood { fill: #3a2f27; }
+.branch-twig { fill: none; stroke: #3a2f27; stroke-width: 2.4; stroke-linecap: round; }
+.branch-leaf { fill: #4a4236; }
+
+.nest {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: clamp(3.4rem, 6.6vw, 5.2rem);
+    aspect-ratio: 64 / 28;
+    opacity: 0;
+}
+
+.nest svg {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.nest-bowl { fill: #5e4a38; }
+.nest-twigs path { fill: none; stroke: #8a6f55; stroke-width: 1.2; stroke-linecap: round; }
+
+.nest-glow {
+    position: absolute;
+    left: -60%;
+    right: -60%;
+    top: -140%;
+    bottom: -40%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 50% 55%, rgba(255, 214, 150, 0.42) 0%, rgba(255, 196, 120, 0.12) 40%, transparent 70%);
+    opacity: 0;
+    animation: nestBreath 5s ease-in-out infinite;
+}
+
+@keyframes nestBreath {
+    0%, 100% { filter: brightness(0.9); }
+    50% { filter: brightness(1.2); }
+}
+
+.page {
+    position: relative;
+    z-index: 2;
+    width: min(44rem, calc(100% - 2.5rem));
+    margin: 0 auto;
+    padding: 0 0 18vh;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12vh 0 8vh;
+}
+
+.eyebrow {
+    margin: 0 0 1.25rem;
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    font-size: 0.72rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: rgba(232, 220, 204, 0.48);
+}
+
+.title {
+    margin: 0;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(3.6rem, 14vw, 8rem);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: #f3eadc;
+    text-shadow: 0 0 48px rgba(196, 150, 120, 0.18);
+}
+
+.greeting {
+    margin: 2.4rem 0 0;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 500;
+    color: #d7c4b0;
+}
+
+.scroll-cue {
+    margin-top: auto;
+    padding-top: 18vh;
+    font-family: "Outfit", sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: rgba(232, 220, 204, 0.38);
+    animation: cue 2.4s ease-in-out infinite;
+}
+
+.scroll-cue::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 2.4rem;
+    margin: 0.75rem auto 0;
+    background: linear-gradient(to bottom, rgba(232, 220, 204, 0.45), transparent);
+}
+
+@keyframes cue {
+    0%, 100% { opacity: 0.4; transform: translateY(0); }
+    50% { opacity: 0.9; transform: translateY(6px); }
+}
+
+.letter {
+    display: flex;
+    flex-direction: column;
+    gap: 18vh;
+    padding-top: 8vh;
+}
+
+.blur-text {
+    margin: 0;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    font-family: "Outfit", sans-serif;
+    font-weight: 300;
+    font-size: clamp(1.2rem, 2.6vw, 1.85rem);
+    line-height: 1.55;
+    letter-spacing: 0.01em;
+    color: #efe6d8;
+}
+
+.blur-text--2 {
+    font-family: "Outfit", sans-serif;
+    font-variation-settings: normal;
+}
+
+.signoff {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.1rem;
+    padding: 4vh 0 8vh;
+}
+
+.signoff-line {
+    display: block;
+    width: 4.5rem;
+    height: 1px;
+    background: rgba(232, 220, 204, 0.28);
+}
+
+.signoff-name {
+    margin: 0;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-style: italic;
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    font-weight: 500;
+    color: #f0e6d6;
+}
+
+@media (max-width: 640px) {
+    .page {
+        width: min(44rem, calc(100% - 1.75rem));
+    }
+
+    .letter {
+        gap: 14vh;
+    }
+
+    .moon {
+        top: 4vh;
+        right: 5vw;
+    }
+
+    .pond {
+        width: 86vw;
+    }
+
+    .branch {
+        top: 54vh;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .star,
+    .moon-glow,
+    .moon-cloud,
+    .bird-fly,
+    .pond-glow::after,
+    .nest-glow,
+    .scroll-cue {
+        animation: none;
+    }
+}

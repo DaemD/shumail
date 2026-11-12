@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm sorry — Shumail</title>
+    <link rel="shortcut icon" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script>document.documentElement.className = "js";</script>
+</head>
+
+<body class="loading">
+    <div class="atmosphere" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="sky" aria-hidden="true">
+        <div class="stars"></div>
+        <div class="moon">
+            <span class="moon-glow"></span>
+            <span class="moon-disc">
+                <span class="crater crater-a"></span>
+                <span class="crater crater-b"></span>
+                <span class="crater crater-c"></span>
+            </span>
+            <span class="moon-cloud"></span>
+        </div>
+        <div class="tale">
+            <div class="pond">
+                <span class="pond-glow"></span>
+                <span class="pond-surface"></span>
+                <span class="reflection reflection--birdy"></span>
+                <span class="reflection reflection--mock"></span>
+            </div>
+            <span class="bird bird--birdy"></span>
+            <span class="bird bird--mock"></span>
+            <div class="notes" aria-hidden="true">
+                <span class="note"></span>
+                <span class="note"></span>
+                <span class="note"></span>
+                <span class="note"></span>
+            </div>
+            <span class="branch"></span>
+            <span class="nest"></span>
+        </div>
+    </div>
+
+    <main class="page">
+        <header class="hero">
+            <p class="eyebrow">A letter</p>
+            <h1 class="title">I'm sorry</h1>
+            <p class="greeting">Shumail,</p>
+            <span class="scroll-cue">Scroll</span>
+        </header>
+
+        <article class="letter">
+            <p class="blur-text blur-text--2" data-effect-2>
+                I know this is coming out of nowhere, and honestly I wasn't sure if I should send it at all. But I've been meaning to say this for a long time, and I'd rather say it badly than never say it. I'm sorry, Shumail. I'm sorry for how things ended between us.
+            </p>
+
+            <p class="blur-text blur-text--2" data-effect-2>
+                I hurt you. I know that, and I hate that I was the reason you felt you had to walk away. I've gone over it in my head so many times, what I said, what I did, what I should have done instead. I can't take any of it back, and I'm not going to pretend it was smaller than it was. You didn't deserve that, and definately not from me.
+            </p>
+
+            <p class="blur-text blur-text--2" data-effect-2>
+                I miss it. I miss telling you random stuff, hearing about your day, just knowing you were there.
+            </p>
+
+            <p class="blur-text blur-text--2" data-effect-2>
+                And I miss you. I miss having you in my life. Some days it hits me out of nowhere that you're just not there anymore, and it still doesn't feel real. There's a space where you used to be, and nothing really fills it.
+            </p>
+
+            <p class="blur-text blur-text--2" data-effect-2>
+                And when I look back at what I did, I'm honestly disgusted with myself. I don't recognise the person who treated you like that, and I hate that it was me. You trusted me, and I gave you every reason not to.
+            </p>
+
+            <p class="blur-text blur-text--2" data-effect-2>
+                I'm not writing this to get you to forgive me. Sorry doesn't fix anything and I know that, and I'm not asking you to forget what happened. I just don't want you to go on thinking I never realised what I did, or that it never mattered to me. It mattered. You were one of the very few people I actually felt close to, and losing that is something I've had a hard time accepting.
+            </p>
+
+            <p class="blur-text blur-text--2" data-effect-2>
+                I wish I'd been a better friend when I had the chance. Since then I've had to sit with my mistakes and actually look at them, not just feel bad about them, and try to learn something from it. I'm not saying that to get credit. I'm saying it because you should know I took it seriously. And I know none of that means you owe me anything.
+            </p>
+
+            <p class="blur-text blur-text--2" data-effect-2>
+                But I'll be honest, I still want you in my life. I hope that someday we can talk again, catch up, laugh about something stupid. It wouldnt be the same as before, I know that, and I'm not expecting it to be. I just miss you, Shumaila.
+            </p>
+
+            <p class="blur-text blur-text--2" data-effect-2>
+                If that day ever comes, whenever it is, I'll be here. You don't have to feel weird about how much time has passed. Even a hi is enough, and I'd be really happy to hear from you. And if it never comes, I won't lie and say that's okay. It would really hurt, and I hope it never comes to that. But I'd still be grateful for all of those days.
+            </p>
+
+            <p class="blur-text blur-text--2" data-effect-2>
+                I'll always remember you, Shumail. You've never really left my mind, and I don't think you ever will. What we had was special, and it always will be. It's carved somewhere deep in my heart, and no amount of time is going to wear it away.
+            </p>
+
+            <footer class="signoff">
+                <span class="signoff-line"></span>
+                <p class="signoff-name">Daem</p>
+            </footer>
+        </article>
+    </main>
+
+    <script>
+        window.addEventListener('load', function () {
+            window.scrollTo(0, 0);
+        });
+
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+    </script>
+    <script src="js/gsap.min.js"></script>
+    <script src="js/ScrollTrigger.min.js"></script>
+    <script src="js/split-type.min.js"></script>
+    <script src="js/lenis.min.js"></script>
+    <script src="js/smoothscroll.js"></script>
+    <script type="module" src="js/index.js"></script>
+</body>
+
+</html>
