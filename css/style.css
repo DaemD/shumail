@@ -470,8 +470,15 @@
     }
 
     .moon {
-        top: 4vh;
+        top: 3vh;
         right: 5vw;
+        width: 3.4rem;
+        height: 3.4rem;
+        opacity: 0.6;
+    }
+
+    .blur-text {
+        text-shadow: 0 0 14px rgba(12, 11, 10, 0.95), 0 0 4px rgba(12, 11, 10, 0.8);
     }
 
     .pond {
